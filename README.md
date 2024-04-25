@@ -8,7 +8,7 @@ Explore the various inference configurations using Mistral models. This document
 2. **Quantized Mistral-7B on CPU**
 3. **Quantized Mistral-8x7B on a single RTX 4090 GPU and CPU** 
 
-We recorded 28.26 tokens / second for mixtral-8x7b-instruct-v0.1 on single 4090 + CPU
+We recorded 1700 tokens / second for mistral-7B and 28.26 tokens / second for mixtral-8x7b-instruct-v0.1 on single 4090 + CPU.
 
 ## Environment Setup
 We tested this code on the environment:
@@ -54,3 +54,42 @@ Run the inference script:
 python -m inference
 ```
 
+## llama.cpp Build Instructions
+Build [llama.cpp](https://github.com/ggerganov/llama.cpp)
+```
+git clone https://github.com/ggerganov/llama.cpp.git
+make
+```
+
+## Download Quantized Models
+![GGUF](https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/hub/gguf-spec.png)
+(Figure taken from [GGUF HuggingFace Page](https://huggingface.co/docs/hub/gguf))
+
+Quantization Types: Choose from the types listed on the [Quantization Types](https://huggingface.co/docs/hub/gguf#quantization-types).
+
+## Example Commands:
+Download Mistral-7B-Instruct-v0.2-GGUF_Q6:
+Mistral-7B-Instruct-v0.2-GGUF_Q6
+```
+huggingface-cli download \
+    TheBloke/Mistral-7B-Instruct-v0.2-GGUF mistral-7b-instruct-v0.2.Q6_K.gguf \
+    --local-dir models \
+    --local-dir-use-symlinks False
+```
+
+Mixtral-8x7B-Instruct-v0.1-GGUF_Q4_K_M
+```
+huggingface-cli download \
+    TheBloke/Mixtral-8x7B-Instruct-v0.1-GGUF mixtral-8x7b-instruct-v0.1.Q4_K_M.gguf \
+    --local-dir models \
+    --local-dir-use-symlinks False
+```
+
+## Example Commands:
+
+
+## Advanced Quantization
+Resources:
+- [GGUF HuggingFace Page](https://huggingface.co/docs/hub/gguf)
+- [GGUF Github Repo](https://github.com/ggerganov/ggml/blob/master/docs/gguf.md)
+- [llama.cpp](https://github.com/ggerganov/llama.cpp)

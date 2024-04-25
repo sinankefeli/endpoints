@@ -9,7 +9,7 @@ Input use clean job descriptions from 1024 job postings
 Input average tokens: 724.2 / description
 
 vLLM:
-Avg generation throughput: 1000 token/s - 1700 tokens/s
+Avg generation throughput: 1700 tokens/s
 time elapsed: 236.67 seconds
 """
 import pandas as pd
